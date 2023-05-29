@@ -1,0 +1,96 @@
+---
+title: "Presentacion_Rmarkdown"
+author: "AngeloReal"
+date: "2023-05-29"
+output: 
+  html_document:
+    toc: true
+    number_sections: true
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, fig.width=8, fig.height=8)
+```
+
+# Paquetes
+
+```{r}
+
+library(tidyverse)
+library(knitr)
+library(lorem)
+library(kableExtra)
+library(xtable)
+library(stargazer)
+```
+
+# Carga de datos
+
+```{r}
+library(readr)
+HCCSs <- read_csv("Health_conditions_among_children_under_age_18__by_selected_characteristics__United_States.csv")
+```
+
+# Tabela resumida
+
+
+# Gráfico com principais resultados
+
+
+#Texto con formato
+
+*cursiva* y bien en _negrita_
+
+Enlazar a otras secciones [Paquetes]
+
+Listas:
+1. resultado
+2. resultado
+
+# Tabla en R Markdown ### resumo de alguns indicadores
+```{r}
+HCCSs %>% group_by(PANEL) %>% summarise(Mean=mean(YEAR),SD=sd(YEAR),Min=min(YEAR),Max=max(YEAR),
+                                              .groups = 'drop') %>%
+  as.data.frame() %>% kable() %>% kable_styling("striped")
+```
+
+
+
+# Figuras gráfico com os principais resultado
+
+# Explicações combinando a saída R(via código) com texto formatado
+
+
+# Figuras
+![](https://www.nfcr.org/wp-content/uploads/2020/10/10-ways-to-improve-your-childs-health-for-blog.jpg)
+
+![](https://stayfitndhealthy.com/wp-content/uploads/2022/11/Kids-Health.png)
+
+# Output de R insertado en texto
+
+El código va a insertar **`r set.seed(123); rn <- sample(1:5,1); rn`** palabras en latin
+
+
+# Bibliografia
+![Font]()
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
